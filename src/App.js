@@ -4,7 +4,7 @@ import {
   Switch,
   Redirect,
   NavLink
-} from './react-router-dom';
+} from 'react-router-dom';
 import './App.css';
 import { useEffect, useState } from 'react';
 import { getUser, logout } from './services/fetch-utils';
