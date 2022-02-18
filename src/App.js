@@ -6,28 +6,15 @@ import {
   NavLink
 } from 'react-router-dom';
 import './App.css';
-import { useEffect, useState } from 'react';
-import { getUser, logout } from './services/fetch-utils';
+import { useState } from 'react';
+import { logout } from './services/fetch-utils';
 import HomePage from './HomePage';
 import SearchPage from './SearchPage';
 import WatchList from './WatchList';
 
 
 function App() {
-  const [user, setUser] = useState('');
-
-  useEffect(() => {
-    async function fetch() {
-      const user = await getUser();
-      if (user) setUser(user);
-    }
-    fetch();
-  });
-
-  async function handleLogout() {
-    await logout();
-    setUser('');
-  }
+  const [user, setUser] = useState(localStorage.getItem('supabase.auth.token'));
 
   return (
     <Router>
@@ -42,7 +29,7 @@ function App() {
                 <NavLink to='/watchlist'>Watchlist</NavLink>
               </li>
               <li>
-                <button onClick={handleLogout}>Logout</button>
+                <button onClick={logout}>Logout</button>
               </li>
             </ul>
           }
