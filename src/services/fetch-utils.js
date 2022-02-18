@@ -19,8 +19,8 @@ export async function logout() {
   return (window.location.href = '../');
 }
 
-export async function searchMovies(query) {
-  const response = await fetch(`/.netlify/functions/movies-endpoints?search=${query}`);
+export async function searchMovies(search) {
+  const response = await fetch(`/.netlify/functions/movies-endpoint?searchQuery=${search}`);
   const json = await response.json();
   return json.data.results;
 }

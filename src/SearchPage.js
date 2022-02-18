@@ -16,13 +16,13 @@ export default function SearchPage() {
 
   return (
     <div>SearchPage
-      {/* <form onSubmit={handleSearch}>
+      <form onSubmit={handleSearch}>
         <input value={search} onChange={e => setSearch(e.target.value)} />
         <button>Search</button>
       </form>
       <section>Results:
         <MovieList movies={results} />
-      </section> */}
+      </section>
     </div>
   );
 }

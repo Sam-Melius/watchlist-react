@@ -6,7 +6,7 @@ import WatchListItem from './WatchListItem';
 export default function MovieList({ movies }) {
   const location = useLocation();
   return (
-    <div>MovieList
+    <div className='list'>
       {
         movies.map((movie, i) => location.pathname.includes('search')
           ? <Movie key={movie.title + i} movie={movie} />

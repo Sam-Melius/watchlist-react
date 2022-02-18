@@ -3,10 +3,10 @@ require('dotenv').config();
 
 
 exports.handler = async (event) => {
-  const search = event.queryStringParameters.search;
-  const URL = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIE_KEY}&language=en-US&page=1&include_adult=false&query=${search}`;
+  const searchQuery = event.queryStringParameters.searchQuery;
+  const URL = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIE_KEY}&language=en-US&page=1&include_adult=false&query=${searchQuery}`;
   try {
-    const response = await fetch('URL');
+    const response = await fetch(URL);
     const data = await response.json();
     const json = JSON.stringify({ data });
     
