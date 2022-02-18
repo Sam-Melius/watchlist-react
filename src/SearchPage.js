@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import MovieList from './MovieList';
-import { searchMovies } from './services/fetch-utils';
+import { searchMovies, getWatchList } from './services/fetch-utils';
 
 export default function SearchPage() {
   const [search, setSearch] = useState('');
@@ -14,6 +14,15 @@ export default function SearchPage() {
     setResults(movies);
   }
 
+  async function refreshList() {
+    const myList = await getWatchList();
+    setWatchlist(myList);
+  }
+
+  useEffect(() => {
+    refreshList();
+  }, []);
+
   return (
     <div>SearchPage
       <form onSubmit={handleSearch}>
@@ -21,7 +30,7 @@ export default function SearchPage() {
         <button>Search</button>
       </form>
       <section>Results:
-        <MovieList movies={results} />
+        <MovieList movies={results} refreshList={refreshList} />
       </section>
     </div>
   );
