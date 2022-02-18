@@ -7,12 +7,12 @@ export default function SearchPage() {
   const [results, setResults] = useState([]);
   const [watchlist, setWatchlist] = useState([]);
 
-  // async function handleSearch(e) {
-  //   e.preventDefault();
+  async function handleSearch(e) {
+    e.preventDefault();
 
-  //   const movies = await searchMovies(search);
-  //   setResults(movies);
-  // }
+    const movies = await searchMovies(search);
+    setResults(movies);
+  }
 
   return (
     <div>SearchPage
