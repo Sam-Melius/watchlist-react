@@ -27,6 +27,7 @@ export default function HomePage({ setUser }) {
     e.preventDefault();
 
     const user = await signInUser(signInEmail, signInPassword);
+    setUser(user);
     clearForms();
   }
 

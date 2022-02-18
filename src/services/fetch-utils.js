@@ -18,3 +18,9 @@ export async function logout() {
   await client.auth.signOut();
   return (window.location.href = '../');
 }
+
+export async function searchMovies(query) {
+  const response = await fetch(`/.netlify/functions/movies-endpoints?search=${query}`);
+  const json = await response.json();
+  return json.data.results;
+}
