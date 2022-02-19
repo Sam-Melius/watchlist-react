@@ -16,7 +16,8 @@ export default function WatchList() {
   }, []);
 
   return (
-    <div>WatchList
+    <div> 
+      <h2>My WatchList:</h2>
       <MovieList movies={movies} refreshList={refreshList} />
     </div>
   );

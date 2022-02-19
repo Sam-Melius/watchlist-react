@@ -1,59 +1,45 @@
 import React, { useState } from 'react';
-import { signInUser, signUpUser } from './services/fetch-utils';
+import { signIn, signUp } from './services/fetch-utils';
 
 
 export default function HomePage({ setUser }) {
-  const [signUpEmail, setSignUpEmail] = useState('');
-  const [signUpPassword, setSignUpPassword] = useState('');
-  const [signInEmail, setSignInEmail] = useState('');
-  const [signInPassword, setSignInPassword] = useState('');
-
-  function clearForms() {
-    setSignInEmail('');
-    setSignInPassword('');
-    setSignUpEmail('');
-    setSignUpPassword('');
-  }
-
-  async function handleSignUp(e) {
-    e.preventDefault();
-
-    const user = await signUpUser(signUpEmail, signUpPassword);
-    setUser(user);
-    clearForms();
-  }
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  
 
   async function handleSignIn(e) {
     e.preventDefault();
-
-    const user = await signInUser(signInEmail, signInPassword);
+    const user = await signIn(email, password);  
+   
     setUser(user);
-    clearForms();
+    
+  }
+    
+  async function handleSignUp() {
+    const user = await signUp(email, password);
+   
+    setUser(user);
+    
   }
 
   return (
-    <div>Home Page
-      <form onSubmit={handleSignUp}>
-        <label>
-          Email
-          <input value={signUpEmail} onChange={e => setSignUpEmail(e.target.value)} />
-        </label>
-        <label>
-          Password
-          <input value={signUpPassword} onChange={e => setSignUpPassword(e.target.value)} />
-        </label>
-        <button>Sign Up</button>
-      </form>
+    <div className='auth'>
+      <h1><em>Movie WatchList</em></h1>
+      
       <form onSubmit={handleSignIn}>
         <label>
-          Email
-          <input value={signInEmail} onChange={e => setSignInEmail(e.target.value)} />
+            Email
+          
+          <input required type="email" onChange={e => setEmail(e.target.value)} name="email" />
         </label>
         <label>
-          Password
-          <input value={signInPassword} onChange={e => setSignInPassword(e.target.value)} />
+            Password
+          
+          <input required type="password" onChange={e => setPassword(e.target.value)} name="password" />
         </label>
         <button>Sign In</button>
+        
+        <button type="button" onClick={handleSignUp} >Sign Up</button>
       </form>
     </div>
   );

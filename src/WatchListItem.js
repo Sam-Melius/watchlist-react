@@ -9,7 +9,7 @@ export default function WatchListItem({ movie, refreshList }) {
   }
 
   return (
-    <div className='movie' onClick={handleClick}>
+    <div className='movie my-movie' onClick={handleClick}>
       <h1>{movie.watched ? '✅' : '📽'}</h1>
       <h2>{movie.title}</h2>
       <p>{movie.overview}</p>

@@ -13,7 +13,7 @@ import SearchPage from './SearchPage';
 import WatchList from './WatchList';
 
 
-function App() {
+export default function App() {
   const [user, setUser] = useState(localStorage.getItem('supabase.auth.token'));
 
   return (
@@ -67,4 +67,4 @@ function App() {
   );
 }
 
-export default App;
+
