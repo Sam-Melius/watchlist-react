@@ -23,6 +23,12 @@ export default function SearchPage() {
     refreshList();
   }, []);
 
+  function onList(api_id) {
+    const match = watchlist.find(item => Number(item.api_id) === Number(api_id));
+    return Boolean(match);
+  }
+  
+
   return (
     <div>SearchPage
       <form onSubmit={handleSearch}>
@@ -30,7 +36,7 @@ export default function SearchPage() {
         <button>Search</button>
       </form>
       <section>Results:
-        <MovieList movies={results} refreshList={refreshList} />
+        <MovieList movies={results} onList={onList} refreshList={refreshList} />
       </section>
     </div>
   );

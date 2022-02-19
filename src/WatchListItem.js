@@ -10,10 +10,11 @@ export default function WatchListItem({ movie, refreshList }) {
 
   return (
     <div className='movie' onClick={handleClick}>
+      <h1>{movie.watched ? '✅' : '📽'}</h1>
       <h2>{movie.title}</h2>
       <p>{movie.overview}</p>
       <p>
-        <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} />
+        <img src={`https://image.tmdb.org/t/p/original${movie.poster}`} />
       </p>
     </div>
   );

@@ -3,13 +3,13 @@ import { useLocation } from 'react-router';
 import Movie from './Movie';
 import WatchListItem from './WatchListItem';
 
-export default function MovieList({ movies, refreshList }) {
+export default function MovieList({ movies, refreshList, onList }) {
   const location = useLocation();
   return (
     <div className='list'>
       {
         movies.map((movie, i) => location.pathname.includes('search')
-          ? <Movie key={movie.title + i} movie={movie} refreshList={refreshList} />
+          ? <Movie key={movie.title + i} movie={movie} onList={onList} refreshList={refreshList} />
           : <WatchListItem key={movie.title + i} movie={movie} refreshList={refreshList}/>)
       }
     </div>
