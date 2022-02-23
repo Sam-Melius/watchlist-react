@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react/cjs/react.development';
+import { useState, useEffect } from 'react';
 import MovieList from './MovieList';
 import { getWatchList } from './services/fetch-utils';
 
